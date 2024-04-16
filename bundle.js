@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('node:util'), require('node:stream'), require('child_process'), require('fs'), require('node:child_process'), require('node:crypto'), require('node:path'), require('node:events')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'node:util', 'node:stream', 'child_process', 'fs', 'node:child_process', 'node:crypto', 'node:path', 'node:events'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.sharpModule = {}, global.require$$0$3, global.require$$1$1, global.require$$0$1, global.require$$0, global.require$$0$2, global.require$$1, global.require$$0$4, global.require$$0$5));
-})(this, (function (exports, require$$0$3, require$$1$1, require$$0$1, require$$0, require$$0$2, require$$1, require$$0$4, require$$0$5) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('node:util'), require('node:stream'), require('child_process'), require('fs'), require('node:child_process'), require('node:crypto'), require('node:path'), require('node:events')) :
+	typeof define === 'function' && define.amd ? define(['node:util', 'node:stream', 'child_process', 'fs', 'node:child_process', 'node:crypto', 'node:path', 'node:events'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.sharpModule = factory(global.require$$0$3, global.require$$1$1, global.require$$0$1, global.require$$0, global.require$$0$2, global.require$$1, global.require$$0$4, global.require$$0$5));
+})(this, (function (require$$0$3, require$$1$1, require$$0$1, require$$0, require$$0$2, require$$1, require$$0$4, require$$0$5) { 'use strict';
 
 	function getDefaultExportFromCjs (x) {
 		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -177,7 +177,7 @@
 		throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 	}
 
-	var sharp$4 = {exports: {}};
+	var sharp$5 = {exports: {}};
 
 	const isLinux$1 = () => process.platform === 'linux';
 
@@ -3206,11 +3206,11 @@
 	  '@img/sharp-wasm32/sharp.node'
 	];
 
-	let sharp$3;
+	let sharp$4;
 	const errors = [];
 	for (const path of paths) {
 	  try {
-	    sharp$3 = commonjsRequire(path);
+	    sharp$4 = commonjsRequire(path);
 	    break;
 	  } catch (err) {
 	    /* istanbul ignore next */
@@ -3219,8 +3219,8 @@
 	}
 
 	/* istanbul ignore next */
-	if (sharp$3) {
-	  sharp$4.exports = sharp$3;
+	if (sharp$4) {
+	  sharp$5.exports = sharp$4;
 	} else {
 	  const [isLinux, isMacOs, isWindows] = ['linux', 'darwin', 'win32'].map(os => runtimePlatform$1.startsWith(os));
 
@@ -3303,7 +3303,7 @@
 	  throw new Error(help.join('\n'));
 	}
 
-	var sharpExports = sharp$4.exports;
+	var sharpExports = sharp$5.exports;
 
 	const util = require$$0$3;
 	const stream = require$$1$1;
@@ -5711,7 +5711,7 @@
 
 	const color$2 = color$3;
 	const is$7 = is$9;
-	const sharp$2 = sharpExports;
+	const sharp$3 = sharpExports;
 
 	/**
 	 * Justication alignment
@@ -6194,7 +6194,7 @@
 	    if (this._isStreamInput()) {
 	      this.on('finish', () => {
 	        this._flattenBufferIn();
-	        sharp$2.metadata(this.options, (err, metadata) => {
+	        sharp$3.metadata(this.options, (err, metadata) => {
 	          if (err) {
 	            callback(is$7.nativeError(err, stack));
 	          } else {
@@ -6203,7 +6203,7 @@
 	        });
 	      });
 	    } else {
-	      sharp$2.metadata(this.options, (err, metadata) => {
+	      sharp$3.metadata(this.options, (err, metadata) => {
 	        if (err) {
 	          callback(is$7.nativeError(err, stack));
 	        } else {
@@ -6217,7 +6217,7 @@
 	      return new Promise((resolve, reject) => {
 	        const finished = () => {
 	          this._flattenBufferIn();
-	          sharp$2.metadata(this.options, (err, metadata) => {
+	          sharp$3.metadata(this.options, (err, metadata) => {
 	            if (err) {
 	              reject(is$7.nativeError(err, stack));
 	            } else {
@@ -6233,7 +6233,7 @@
 	      });
 	    } else {
 	      return new Promise((resolve, reject) => {
-	        sharp$2.metadata(this.options, (err, metadata) => {
+	        sharp$3.metadata(this.options, (err, metadata) => {
 	          if (err) {
 	            reject(is$7.nativeError(err, stack));
 	          } else {
@@ -6296,7 +6296,7 @@
 	    if (this._isStreamInput()) {
 	      this.on('finish', () => {
 	        this._flattenBufferIn();
-	        sharp$2.stats(this.options, (err, stats) => {
+	        sharp$3.stats(this.options, (err, stats) => {
 	          if (err) {
 	            callback(is$7.nativeError(err, stack));
 	          } else {
@@ -6305,7 +6305,7 @@
 	        });
 	      });
 	    } else {
-	      sharp$2.stats(this.options, (err, stats) => {
+	      sharp$3.stats(this.options, (err, stats) => {
 	        if (err) {
 	          callback(is$7.nativeError(err, stack));
 	        } else {
@@ -6319,7 +6319,7 @@
 	      return new Promise((resolve, reject) => {
 	        this.on('finish', function () {
 	          this._flattenBufferIn();
-	          sharp$2.stats(this.options, (err, stats) => {
+	          sharp$3.stats(this.options, (err, stats) => {
 	            if (err) {
 	              reject(is$7.nativeError(err, stack));
 	            } else {
@@ -6330,7 +6330,7 @@
 	      });
 	    } else {
 	      return new Promise((resolve, reject) => {
-	        sharp$2.stats(this.options, (err, stats) => {
+	        sharp$3.stats(this.options, (err, stats) => {
 	          if (err) {
 	            reject(is$7.nativeError(err, stack));
 	          } else {
@@ -8413,7 +8413,7 @@
 
 	const path = require$$0$4;
 	const is$1 = is$9;
-	const sharp$1 = sharpExports;
+	const sharp$2 = sharpExports;
 
 	const formats = new Map([
 	  ['heic', 'heif'],
@@ -9863,7 +9863,7 @@
 	      // output=file/buffer, input=stream
 	      this.on('finish', () => {
 	        this._flattenBufferIn();
-	        sharp$1.pipeline(this.options, (err, data, info) => {
+	        sharp$2.pipeline(this.options, (err, data, info) => {
 	          if (err) {
 	            callback(is$1.nativeError(err, stack));
 	          } else {
@@ -9873,7 +9873,7 @@
 	      });
 	    } else {
 	      // output=file/buffer, input=file/buffer
-	      sharp$1.pipeline(this.options, (err, data, info) => {
+	      sharp$2.pipeline(this.options, (err, data, info) => {
 	        if (err) {
 	          callback(is$1.nativeError(err, stack));
 	        } else {
@@ -9888,7 +9888,7 @@
 	      // output=stream, input=stream
 	      this.once('finish', () => {
 	        this._flattenBufferIn();
-	        sharp$1.pipeline(this.options, (err, data, info) => {
+	        sharp$2.pipeline(this.options, (err, data, info) => {
 	          if (err) {
 	            this.emit('error', is$1.nativeError(err, stack));
 	          } else {
@@ -9904,7 +9904,7 @@
 	      }
 	    } else {
 	      // output=stream, input=file/buffer
-	      sharp$1.pipeline(this.options, (err, data, info) => {
+	      sharp$2.pipeline(this.options, (err, data, info) => {
 	        if (err) {
 	          this.emit('error', is$1.nativeError(err, stack));
 	        } else {
@@ -9923,7 +9923,7 @@
 	      return new Promise((resolve, reject) => {
 	        this.once('finish', () => {
 	          this._flattenBufferIn();
-	          sharp$1.pipeline(this.options, (err, data, info) => {
+	          sharp$2.pipeline(this.options, (err, data, info) => {
 	            if (err) {
 	              reject(is$1.nativeError(err, stack));
 	            } else {
@@ -9939,7 +9939,7 @@
 	    } else {
 	      // output=promise, input=file/buffer
 	      return new Promise((resolve, reject) => {
-	        sharp$1.pipeline(this.options, (err, data, info) => {
+	        sharp$2.pipeline(this.options, (err, data, info) => {
 	          if (err) {
 	            reject(is$1.nativeError(err, stack));
 	          } else {
@@ -9997,10 +9997,10 @@
 
 	const is = is$9;
 	const { runtimePlatformArch } = libvips;
-	const sharp = sharpExports;
+	const sharp$1 = sharpExports;
 
 	const runtimePlatform = runtimePlatformArch();
-	const libvipsVersion = sharp.libvipsVersion();
+	const libvipsVersion = sharp$1.libvipsVersion();
 
 	/**
 	 * An Object containing nested boolean values representing the available input and output formats/methods.
@@ -10009,7 +10009,7 @@
 	 * console.log(sharp.format);
 	 * @returns {Object}
 	 */
-	const format = sharp.format();
+	const format = sharp$1.format();
 	format.heif.output.alias = ['avif', 'heic'];
 	format.jpeg.output.alias = ['jpe', 'jpg'];
 	format.tiff.output.alias = ['tif'];
@@ -10087,14 +10087,14 @@
 	  if (is.bool(options)) {
 	    if (options) {
 	      // Default cache settings of 50MB, 20 files, 100 items
-	      return sharp.cache(50, 20, 100);
+	      return sharp$1.cache(50, 20, 100);
 	    } else {
-	      return sharp.cache(0, 0, 0);
+	      return sharp$1.cache(0, 0, 0);
 	    }
 	  } else if (is.object(options)) {
-	    return sharp.cache(options.memory, options.files, options.items);
+	    return sharp$1.cache(options.memory, options.files, options.items);
 	  } else {
-	    return sharp.cache();
+	    return sharp$1.cache();
 	  }
 	}
 	cache(true);
@@ -10136,12 +10136,12 @@
 	 * @returns {number} concurrency
 	 */
 	function concurrency (concurrency) {
-	  return sharp.concurrency(is.integer(concurrency) ? concurrency : null);
+	  return sharp$1.concurrency(is.integer(concurrency) ? concurrency : null);
 	}
 	/* istanbul ignore next */
-	if (detectLibc.familySync() === detectLibc.GLIBC && !sharp._isUsingJemalloc()) {
+	if (detectLibc.familySync() === detectLibc.GLIBC && !sharp$1._isUsingJemalloc()) {
 	  // Reduce default concurrency to 1 when using glibc memory allocator
-	  sharp.concurrency(1);
+	  sharp$1.concurrency(1);
 	}
 
 	/**
@@ -10167,7 +10167,7 @@
 	 * @returns {Object}
 	 */
 	function counters () {
-	  return sharp.counters();
+	  return sharp$1.counters();
 	}
 
 	/**
@@ -10188,7 +10188,7 @@
 	 * @returns {boolean}
 	 */
 	function simd (simd) {
-	  return sharp.simd(is.bool(simd) ? simd : null);
+	  return sharp$1.simd(is.bool(simd) ? simd : null);
 	}
 
 	/**
@@ -10210,7 +10210,7 @@
 	function block (options) {
 	  if (is.object(options)) {
 	    if (Array.isArray(options.operation) && options.operation.every(is.string)) {
-	      sharp.block(options.operation, true);
+	      sharp$1.block(options.operation, true);
 	    } else {
 	      throw is.invalidParameterError('operation', 'Array<string>', options.operation);
 	    }
@@ -10248,7 +10248,7 @@
 	function unblock (options) {
 	  if (is.object(options)) {
 	    if (Array.isArray(options.operation) && options.operation.every(is.string)) {
-	      sharp.block(options.operation, false);
+	      sharp$1.block(options.operation, false);
 	    } else {
 	      throw is.invalidParameterError('operation', 'Array<string>', options.operation);
 	    }
@@ -10286,8 +10286,8 @@
 
 	var lib = Sharp;
 
-	var index = /*@__PURE__*/getDefaultExportFromCjs(lib);
+	var sharp = /*@__PURE__*/getDefaultExportFromCjs(lib);
 
-	exports.sharp = index;
+	return sharp;
 
 }));
